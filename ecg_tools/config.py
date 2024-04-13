@@ -12,14 +12,11 @@ class Mode(Enum):
 
 @dataclasses.dataclass()
 class DatasetConfig:
-    # 載入 dataset
-    # 預設 batch_size 為 64 
-    # batch_size: int = 64
-    batch_size: int = 32
-    num_workers: int = 2
+    batch_size: int = 64
+    num_workers: int = 0 # 多線程設定，設成0不會出錯
     path: Dict = dataclasses.field(default_factory=lambda: {
-        Mode.train: "../data/mitbih_train.csv",
-        Mode.eval: "../data/mitbih_test.csv"
+        Mode.train: "..\\data\\mitbih_train.csv",
+        Mode.eval: "..\\data\\mitbih_test.csv"
     })
     transforms: Dict = dataclasses.field(default_factory=lambda: {
         Mode.train: Compose([RandomNoise(0.05, 0.5), RandomShift(10, 0.5)]), Mode.eval: lambda x: x})
@@ -42,5 +39,5 @@ class EcgConfig:
     model: ModelConfig = ModelConfig()
     device: Union[int, str] = "cuda"
     lr: float = 2e-4
-    num_epochs: int = 30
+    num_epochs: int = 3
     validation_frequency: int = 2

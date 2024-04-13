@@ -44,6 +44,8 @@ def get_data_loaders(config: DatasetConfig):
 
 
 if __name__ == "__main__":
+    import os
+    os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
     loader = get_data_loaders(DatasetConfig())
     for signal, label in loader[Mode.train]:
         from matplotlib import pyplot as plt
