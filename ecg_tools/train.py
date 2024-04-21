@@ -27,7 +27,8 @@ class ECGClassifierTrainer:
         ).to(config.device)
         self.config = config
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.config.lr, weight_decay=1e-4)
-        self.loss = torch.nn.CrossEntropyLoss(weight=torch.tensor([0.1, 0.4, 0.2, 0.5, 0.2]).to(self.config.device))
+        # Set a higher weight for labels with less data
+        self.loss = torch.nn.CrossEntropyLoss(weight=torch.tensor([0.1, 0.4, 0.2, 0.5, 0.2, 0.2]).to(self.config.device))
         self.data_loader = get_data_loaders(self.config.dataset)
         self.metrics = {
             Mode.train: Metrics(),
@@ -49,7 +50,7 @@ class ECGClassifierTrainer:
     def train_epoch(self, epoch):
         epoch_loss = 0
         self.model.train()
-        loader = tqdm(self.data_loader[Mode.train])
+        loader = tqdm(self.data_loader[Mode.train]) #　進度條
         accuracy = 0
         self.metrics[Mode.train].reset()
         for index, data in enumerate(loader):
@@ -75,7 +76,7 @@ class ECGClassifierTrainer:
     def validate_epoch(self, epoch):
         self.model.eval()
         accuracy = 0
-        loader = tqdm(self.data_loader[Mode.eval])
+        loader = tqdm(self.data_loader[Mode.eval]) # 進度條
         self.metrics[Mode.eval].reset()
         for index, data in enumerate(loader):
             signal, label = [d.to(self.config.device) for d in data]

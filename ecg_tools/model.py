@@ -59,6 +59,7 @@ class MultiHeadAttention(torch.nn.Module):
         queries = einops.rearrange(queries, "b n (h e) -> b n h e", h=self.num_heads)
         values = einops.rearrange(values, "b n (h e) -> b n h e", h=self.num_heads)
         energy_term = torch.einsum("bqhe, bkhe -> bqhk", queries, keys)
+        # To reduce variance, therefore divide by the square root of the dimension
         divider = sqrt(self.embed_size)
         mh_out = torch.softmax(energy_term, -1)
         out = torch.einsum('bihv, bvhd -> bihd ', mh_out / divider, values)
@@ -97,6 +98,9 @@ class Classifier(nn.Sequential):
 class ECGformer(nn.Module):
 
     def __init__(self, num_layers, signal_length, num_classes, input_channels, embed_size, num_heads, expansion) -> None:
+        # num_layers: 重複 N 次
+        # signal length 輸入訊號的長度
+        #　num_classes: 輸出的分類
         super().__init__()
         self.encoder = nn.ModuleList([TransformerEncoderLayer(
             embed_size=embed_size, num_heads=num_heads, expansion=expansion) for _ in range(num_layers)])
@@ -106,17 +110,27 @@ class ECGformer(nn.Module):
 
     def forward(self, x):
         embedded = self.embedding(x)
-
+        # i = 0
         for layer in self.encoder:
+            # print(f"========{i}===========")
+            # print(layer)
             embedded = layer(embedded + self.positional_encoding)
+            # i=i+1
 
         return self.classifier(embedded)
 
 
 if __name__ == "__main__":
-    print(LinearEmbedding(3, 192)(torch.rand(2, 128, 3)).shape)
-    print(MLP(3)(torch.rand(2, 128, 3)).shape)
-    print(TransformerEncoderLayer(192, 8)(torch.rand(2, 128, 192)).shape)
-    print(ECGformer(
-        4, 128, 5, 3, 192, 8, 4
-    )(torch.rand(2, 128, 3)).shape)
+    from torchinfo import summary
+    # print(LinearEmbedding(1, 192)(torch.rand(2, 128, 1)).shape)
+    # print(MLP(3)(torch.rand(2, 128, 3)).shape)
+    # print(TransformerEncoderLayer(192, 8)(torch.rand(2, 128, 192)).shape)
+    #  print(ECGformer(
+    #     6, 187, 2, 1, 192, 8, 4
+    # )(torch.rand(2, 187, 1)).shape)
+
+
+
+
+
+
