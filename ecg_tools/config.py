@@ -13,23 +13,21 @@ class Mode(Enum):
 @dataclasses.dataclass()
 class DatasetConfig:
     batch_size: int = 32
-    num_workers: int = 0 # 多線程設定，設成0不會出錯
+    num_workers: int = 8  # 多線程設定，設成0不會出錯，但是會很慢
     path: Dict = dataclasses.field(default_factory=lambda: {
-        # Mode.train: "..\\data\\mitbih_train.csv",
-        # Mode.eval: "..\\data\\mitbih_test.csv"
-        Mode.train: "..\\data\\mitbih_ptbdb_train.csv",
-        Mode.eval: "..\\data\\mitbih_ptbdb_test.csv"
-        # Mode.train: "..\\data\\ptbdb_normal.csv",
-        # Mode.eval: "..\\data\\ptbdb_abnormal.csv"
+        Mode.train: "..\\data\\mitbih_ptbdb_train_sliced.csv",
+        Mode.eval: "..\\data\\mitbih_ptbdb_test_sliced.csv"
     })
     transforms: Dict = dataclasses.field(default_factory=lambda: {
-        Mode.train: Compose([RandomNoise(0.05, 0.5), RandomShift(10, 0.5)]), Mode.eval: lambda x: x})
+        Mode.train: Compose([RandomNoise(0.05, 0.5),
+                             RandomShift(10, 0.5)]),
+        Mode.eval: lambda x: x})
 
 
 @dataclasses.dataclass()
 class ModelConfig:
     num_layers: int = 6
-    signal_length: int = 187
+    signal_length: int = 149  # 原本是 187，縮減訊號長度成 149
     num_classes: int = 6
     input_channels: int = 1
     embed_size: int = 192
@@ -43,5 +41,5 @@ class EcgConfig:
     model: ModelConfig = ModelConfig()
     device: Union[int, str] = "cuda"
     lr: float = 2e-4
-    num_epochs: int = 250
+    num_epochs: int = 400
     validation_frequency: int = 2
