@@ -7,13 +7,17 @@ import torch.nn as nn
 
 
 class LinearEmbedding(nn.Sequential):
-
+    """
+    這個類別是用來將輸入的訊號轉換成 Embedding
+    """
     def __init__(self, input_channels, output_channels) -> None:
+        # Input Embedding Layer
         super().__init__(*[
             nn.Linear(input_channels, output_channels),
             nn.LayerNorm(output_channels),
             nn.GELU()
         ])
+        # position embedding
         self.cls_token = nn.Parameter(torch.randn(1, output_channels))
 
     def forward(self, x):
@@ -98,9 +102,20 @@ class Classifier(nn.Sequential):
 class ECGformer(nn.Module):
 
     def __init__(self, num_layers, signal_length, num_classes, input_channels, embed_size, num_heads, expansion) -> None:
-        # num_layers: 重複 N 次
-        # signal length 輸入訊號的長度
-        #　num_classes: 輸出的分類
+        """
+        :param num_layers: 重複 N 次
+        :param signal_length: 輸入訊號的長度
+        :param num_classes: 輸出的分類
+        :param input_channels: 輸入訊號的通道數
+        :param embed_size: 這個參數控制了 Transformer 的維度大小，通常情況下，這個參數的值越大，模型的性能也會越好，
+        :param num_heads: 這個參數控制了 MultiHeadAttention 的頭數，頭數越多，模型可以學習到更多的特徵表示.
+        :param expansion: 在 MLP 的結構中，首先有一個線性層將輸入的維度擴展到 input_channels * expansion，
+                          然後經過一個 GELU 激活函數，最後再通過一個線性層將維度壓縮回 input_channels。
+                          這種結構有時被稱為 "bottleneck" 結構，因為它先擴展維度，然後再壓縮維度。
+                          這種結構的好處是，當 expansion 大於 1 時，模型可以在隱藏層中學習更多的特徵表示，
+                          這可能有助於提高模型的性能。然而，這也會增加模型的參數數量和計算量，
+                          因此需要根據具體的應用場景來選擇合適的 expansion 值
+        """
         super().__init__()
         self.encoder = nn.ModuleList([TransformerEncoderLayer(
             embed_size=embed_size, num_heads=num_heads, expansion=expansion) for _ in range(num_layers)])
