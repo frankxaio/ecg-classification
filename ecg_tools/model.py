@@ -11,7 +11,7 @@ class LinearEmbedding(nn.Sequential):
     這個類別是用來將輸入的訊號轉換成 Embedding
     """
     def __init__(self, input_channels, output_channels) -> None:
-        # Input Embedding Layer
+        # Input Embedding Layer, output channel 為 embed_size
         super().__init__(*[
             nn.Linear(input_channels, output_channels),
             nn.LayerNorm(output_channels),
@@ -23,6 +23,7 @@ class LinearEmbedding(nn.Sequential):
     def forward(self, x):
         # 直接使用上面創建的 Linear -> LayerNorm -> GELU()
         embedded = super().forward(x)
+        # repeat(self, pattern, **axes_lengths) 產生符合 batch size 的 token
         return torch.cat([einops.repeat(self.cls_token, "n e -> b n e", b=x.shape[0]), embedded], dim=1)
 
 
@@ -72,7 +73,13 @@ class MultiHeadAttention(torch.nn.Module):
 
 
 class TransformerEncoderLayer(torch.nn.Sequential):
-    def __init__(self, embed_size=768, expansion=4, num_heads=8, dropout=0.1):
+    def __init__(self, embed_size=768, expansion=4, num_heads=4, dropout=0.1):
+        """
+        :param embed_size: 原本是 768
+        :param expansion:  原本是 4
+        :param num_heads:  原本是 6
+        :param dropout:
+        """
         super(TransformerEncoderLayer, self).__init__(
             *[
                 ResidualAdd(nn.Sequential(*[
@@ -140,10 +147,7 @@ if __name__ == "__main__":
     # print(LinearEmbedding(1, 192)(torch.rand(2, 128, 1)).shape)
     # print(MLP(3)(torch.rand(2, 128, 3)).shape)
     # print(TransformerEncoderLayer(192, 8)(torch.rand(2, 128, 192)).shape)
-    #  print(ECGformer(
-    #     6, 187, 2, 1, 192, 8, 4
-    # )(torch.rand(2, 187, 1)).shape)
-
+    # print(ECGformer(6, 187, 2, 1, 192, 8, 4)(torch.rand(2, 187, 1)).shape)
 
 
 

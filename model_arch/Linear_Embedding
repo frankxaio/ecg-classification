@@ -1,0 +1,17 @@
+// Linear Embedding
+digraph {
+	input [label="Input Signal
+(batch_size, signal_length, input_channels)" shape=box]
+	linear [label="Linear Transformation
+(input_channels, output_channels)" shape=box]
+	layernorm [label="Layer Normalization" shape=box]
+	gelu [label="GELU Activation" shape=box]
+	cls_token [label="CLS Token" shape=box]
+	output [label="Embedded Signal
+(batch_size, signal_length+1, output_channels)" shape=box]
+	input -> linear
+	linear -> layernorm
+	layernorm -> gelu
+	gelu -> cls_token [label=Concatenate]
+	cls_token -> output
+}

@@ -1,0 +1,16 @@
+// MLP
+digraph {
+	input [label="Input
+(batch_size, seq_len, input_channels)" shape=box]
+	linear1 [label="Linear
+(input_channels, input_channels * expansion)" shape=box]
+	gelu [label=GELU shape=box]
+	linear2 [label="Linear
+(input_channels * expansion, input_channels)" shape=box]
+	output [label="Output
+(batch_size, seq_len, input_channels)" shape=box]
+	input -> linear1
+	linear1 -> gelu
+	gelu -> linear2
+	linear2 -> output
+}

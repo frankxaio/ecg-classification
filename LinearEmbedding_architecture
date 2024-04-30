@@ -1,0 +1,18 @@
+// LinearEmbedding Architecture
+digraph {
+	input [label="Input (b, n, input_channels)" shape=box]
+	linear [label="nn.Linear(input_channels, output_channels)" shape=box]
+	input -> linear
+	layernorm [label="nn.LayerNorm(output_channels)" shape=box]
+	linear -> layernorm
+	gelu [label="nn.GELU()" shape=box]
+	layernorm -> gelu
+	embedded [label="Embedded (b, n, output_channels)" shape=box]
+	gelu -> embedded
+	cls_token [label="cls_token (1, output_channels)" shape=box]
+	concat [label=Concatenate shape=box]
+	embedded -> concat
+	cls_token -> concat
+	output [label="Output (b, n+1, output_channels)" shape=box]
+	concat -> output
+}

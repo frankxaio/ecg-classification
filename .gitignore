@@ -1,2 +1,4 @@
 
 *.csv
+/hardware/NeuralNetwork
+/hardware/tool/SRAM

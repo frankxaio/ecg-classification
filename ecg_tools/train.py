@@ -73,6 +73,7 @@ class ECGClassifierTrainer:
     
 
     @torch.no_grad()
+    # TODO: Add Validation Loss
     def validate_epoch(self, epoch):
         self.model.eval()
         accuracy = 0

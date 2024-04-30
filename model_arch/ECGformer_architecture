@@ -1,0 +1,27 @@
+// ECGformer Architecture
+digraph {
+	input [label="Input Signal
+(batch_size, signal_length, input_channels)" shape=box]
+	embedding [label="Linear Embedding
+CLS Token + Positional Encoding" shape=box]
+	encoder [label="Transformer Encoder Layers" shape=box]
+	classifier [label="Classifier
+Average Pooling + Linear + LayerNorm + Linear" shape=box]
+	output [label="Output Classes
+(batch_size, num_classes)" shape=box]
+	input -> embedding [label="(batch_size, signal_length+1, embed_size)"]
+	embedding -> encoder [label="(batch_size, signal_length+1, embed_size)"]
+	encoder -> classifier [label="(batch_size, signal_length+1, embed_size)"]
+	classifier -> output
+	subgraph cluster_encoder {
+		label="Transformer Encoder Layer" style=dashed
+		mha [label="Multi-Head Attention" shape=box]
+		add1 [label="Add & Norm" shape=box]
+		mlp [label=MLP shape=box]
+		add2 [label="Add & Norm" shape=box]
+		mha -> add1
+		add1 -> mlp
+		mlp -> add2
+		add2 -> mha [label="Repeat N times" style=dashed]
+	}
+}
