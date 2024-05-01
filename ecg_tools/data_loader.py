@@ -47,9 +47,13 @@ if __name__ == "__main__":
     import os
     os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
     loader = get_data_loaders(DatasetConfig())
+    # for signal, label in loader[Mode.train]:
+    #     from matplotlib import pyplot as plt
+    #     plt.style.use("ggplot")
+    #     plt.plot(signal.numpy()[0, :], "-r")
+    #     plt.show()
+    #     break
     for signal, label in loader[Mode.train]:
-        from matplotlib import pyplot as plt
-        plt.style.use("ggplot")
-        plt.plot(signal.numpy()[0, :], "-r")
-        plt.show()
+        print(signal.shape, label.shape)
+        print(label)
         break
