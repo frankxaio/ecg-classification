@@ -1,0 +1,1114 @@
+digraph {
+	graph [size="94.5,94.5"]
+	node [align=left fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	1519490391616 [label="
+ (1, 6)" fillcolor=darkolivegreen1]
+	1519490348992 [label=CppFunction]
+	1519490348608 -> 1519490348992
+	1519490348608 -> 1519147639616 [dir=none]
+	1519147639616 [label="bias
+ (192)" fillcolor=orange]
+	1519490348608 -> 1519490393696 [dir=none]
+	1519490393696 [label="input
+ (1, 192)" fillcolor=orange]
+	1519490348608 -> 1519490396256 [dir=none]
+	1519490396256 [label="result1
+ (1, 1)" fillcolor=orange]
+	1519490348608 -> 1519490396416 [dir=none]
+	1519490396416 [label="result2
+ (1, 1)" fillcolor=orange]
+	1519490348608 -> 1519147635376 [dir=none]
+	1519147635376 [label="weight
+ (192)" fillcolor=orange]
+	1519490348608 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490348752 -> 1519490348608
+	1519490348752 [label=CppFunction]
+	1519490348464 -> 1519490348752
+	1519490348464 [label="MeanBackward1
+-----------------------------
+dim           :          (2,)
+keepdim       :         False
+self_sym_numel:         36096
+self_sym_sizes: (1, 192, 188)"]
+	1519490348368 -> 1519490348464
+	1519490348368 [label="PermuteBackward0
+----------------
+dims: (0, 2, 1)"]
+	1519490348272 -> 1519490348368
+	1519490348272 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490348176 -> 1519490348272
+	1519490348176 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490347888 -> 1519490348176
+	1519490347888 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490347744 -> 1519490347888
+	1519490347744 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490347600 -> 1519490347744
+	1519490347600 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490347360 -> 1519490347600
+	1519490347360 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490347168 -> 1519490347360
+	1519490347168 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490347024 -> 1519490347168
+	1519490347024 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490349184 -> 1519490347024
+	1519490349184 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490349328 -> 1519490349184
+	1519490349328 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490349424 -> 1519490349328
+	1519490349424 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490349568 -> 1519490349424
+	1519490349568 [label="AddBackward0
+------------
+alpha: 1"]
+	1519490349712 -> 1519490349568
+	1519490349712 [label="CatBackward0
+------------
+dim: 1"]
+	1519490349808 -> 1519490349712
+	1519490349808 [label="ExpandBackward0
+---------------------------
+self_sym_sizes: (1, 1, 192)"]
+	1519490349952 -> 1519490349808
+	1519490349952 [label="UnsqueezeBackward0
+------------------
+dim: 0"]
+	1519490350048 -> 1519490349952
+	1519147729280 [label="embedding.cls_token
+ (1, 192)" fillcolor=lightblue]
+	1519147729280 -> 1519490350048
+	1519490350048 [label=AccumulateGrad]
+	1519490349760 -> 1519490349712
+	1519490349760 -> 1519433723440 [dir=none]
+	1519433723440 [label="self
+ (1, 187, 192)" fillcolor=orange]
+	1519490349760 [label="GeluBackward0
+---------------------------
+approximate:           none
+self       : [saved tensor]"]
+	1519490350144 -> 1519490349760
+	1519490350144 -> 1519147636816 [dir=none]
+	1519147636816 [label="bias
+ (192)" fillcolor=orange]
+	1519490350144 -> 1519433725840 [dir=none]
+	1519433725840 [label="input
+ (1, 187, 192)" fillcolor=orange]
+	1519490350144 -> 1519433313600 [dir=none]
+	1519433313600 [label="result1
+ (1, 187, 1)" fillcolor=orange]
+	1519490350144 -> 1519429718944 [dir=none]
+	1519429718944 [label="result2
+ (1, 187, 1)" fillcolor=orange]
+	1519490350144 -> 1519427205488 [dir=none]
+	1519427205488 [label="weight
+ (192)" fillcolor=orange]
+	1519490350144 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490349856 -> 1519490350144
+	1519427205488 [label="embedding.1.weight
+ (192)" fillcolor=lightblue]
+	1519427205488 -> 1519490349856
+	1519490349856 [label=AccumulateGrad]
+	1519490350096 -> 1519490350144
+	1519147636816 [label="embedding.1.bias
+ (192)" fillcolor=lightblue]
+	1519147636816 -> 1519490350096
+	1519490350096 [label=AccumulateGrad]
+	1519490347792 -> 1519490349568
+	1519147729200 [label="positional_encoding
+ (188, 192)" fillcolor=lightblue]
+	1519147729200 -> 1519490347792
+	1519490347792 [label=AccumulateGrad]
+	1519490349520 -> 1519490349424
+	1519490349520 [label=CppFunction]
+	1519490350000 -> 1519490349520
+	1519490350000 [label="UnsafeViewBackward0
+-------------------------------
+self_sym_sizes: (1, 188, 6, 32)"]
+	1519490350192 -> 1519490350000
+	1519490350192 [label=CloneBackward0]
+	1519490350288 -> 1519490350192
+	1519490350288 [label="ViewBackward0
+----------------------------------
+self_sym_sizes: (1, 188, 6, 32, 1)"]
+	1519490350384 -> 1519490350288
+	1519490350384 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490350480 -> 1519490350384
+	1519490350480 [label="ViewBackward0
+----------------------------
+self_sym_sizes: (6, 188, 32)"]
+	1519490350576 -> 1519490350480
+	1519490350576 -> 1519490396736 [dir=none]
+	1519490396736 [label="mat2
+ (6, 188, 32)" fillcolor=orange]
+	1519490350576 -> 1519490396336 [dir=none]
+	1519490396336 [label="self
+ (6, 188, 188)" fillcolor=orange]
+	1519490350576 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490350672 -> 1519490350576
+	1519490350672 [label="ReshapeAliasBackward0
+-----------------------------------
+self_sym_sizes: (6, 188, 188, 1, 1)"]
+	1519490350816 -> 1519490350672
+	1519490350816 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490350912 -> 1519490350816
+	1519490350912 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490351008 -> 1519490350912
+	1519490351008 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490351056 -> 1519490351008
+	1519490351056 -> 1519490396976 [dir=none]
+	1519490396976 [label="other
+ ()" fillcolor=orange]
+	1519490351056 [label="DivBackward0
+---------------------
+other: [saved tensor]
+self :           None"]
+	1519490498720 -> 1519490351056
+	1519490498720 -> 1519490397216 [dir=none]
+	1519490397216 [label="result
+ (1, 188, 6, 188)" fillcolor=orange]
+	1519490498720 [label="SoftmaxBackward0
+----------------------
+dim   :     4294967295
+result: [saved tensor]"]
+	1519490498816 -> 1519490498720
+	1519490498816 [label="ViewBackward0
+-----------------------------------
+self_sym_sizes: (1, 188, 6, 188, 1)"]
+	1519490498912 -> 1519490498816
+	1519490498912 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490499008 -> 1519490498912
+	1519490499008 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (6, 188, 188)"]
+	1519490499104 -> 1519490499008
+	1519490499104 -> 1519490397536 [dir=none]
+	1519490397536 [label="mat2
+ (6, 32, 188)" fillcolor=orange]
+	1519490499104 -> 1519490397456 [dir=none]
+	1519490397456 [label="self
+ (6, 188, 32)" fillcolor=orange]
+	1519490499104 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490499248 -> 1519490499104
+	1519490499248 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 32, 1, 1)"]
+	1519490499392 -> 1519490499248
+	1519490499392 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490499488 -> 1519490499392
+	1519490499488 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490499536 -> 1519490499488
+	1519490499536 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490499680 -> 1519490499536
+	1519490499680 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490499824 -> 1519490499680
+	1519490499824 [label=CppFunction]
+	1519490500016 -> 1519490499824
+	1519490500016 -> 1519427205408 [dir=none]
+	1519427205408 [label="bias
+ (192)" fillcolor=orange]
+	1519490500016 -> 1519490391536 [dir=none]
+	1519490391536 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490500016 -> 1519490397936 [dir=none]
+	1519490397936 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490500016 -> 1519490397696 [dir=none]
+	1519490397696 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490500016 -> 1519427206288 [dir=none]
+	1519427206288 [label="weight
+ (192)" fillcolor=orange]
+	1519490500016 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490349568 -> 1519490500016
+	1519490500256 -> 1519490500016
+	1519427206288 [label="encoder.0.0.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519427206288 -> 1519490500256
+	1519490500256 [label=AccumulateGrad]
+	1519490500064 -> 1519490500016
+	1519427205408 [label="encoder.0.0.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519427205408 -> 1519490500064
+	1519490500064 [label=AccumulateGrad]
+	1519490499152 -> 1519490499104
+	1519490499152 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 32, 1, 188, 1)"]
+	1519490499296 -> 1519490499152
+	1519490499296 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490499776 -> 1519490499296
+	1519490499776 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 1, 3)"]
+	1519490499920 -> 1519490499776
+	1519490499920 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490500352 -> 1519490499920
+	1519490500352 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490500448 -> 1519490500352
+	1519490500448 [label=CppFunction]
+	1519490500016 -> 1519490500448
+	1519490350624 -> 1519490350576
+	1519490350624 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 1, 32, 1)"]
+	1519490350960 -> 1519490350624
+	1519490350960 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490350720 -> 1519490350960
+	1519490350720 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 3, 1)"]
+	1519490498864 -> 1519490350720
+	1519490498864 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490499056 -> 1519490498864
+	1519490499056 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490499440 -> 1519490499056
+	1519490499440 [label=CppFunction]
+	1519490500016 -> 1519490499440
+	1519490349376 -> 1519490349328
+	1519490349376 [label=CppFunction]
+	1519490349616 -> 1519490349376
+	1519490349616 -> 1519490392416 [dir=none]
+	1519490392416 [label="self
+ (1, 188, 768)" fillcolor=orange]
+	1519490349616 [label="GeluBackward0
+---------------------------
+approximate:           none
+self       : [saved tensor]"]
+	1519490350336 -> 1519490349616
+	1519490350336 [label=CppFunction]
+	1519490350528 -> 1519490350336
+	1519490350528 -> 1519427207088 [dir=none]
+	1519427207088 [label="bias
+ (192)" fillcolor=orange]
+	1519490350528 -> 1519490391696 [dir=none]
+	1519490391696 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490350528 -> 1519490398336 [dir=none]
+	1519490398336 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490350528 -> 1519490398256 [dir=none]
+	1519490398256 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490350528 -> 1519427205328 [dir=none]
+	1519427205328 [label="weight
+ (192)" fillcolor=orange]
+	1519490350528 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490349424 -> 1519490350528
+	1519490350864 -> 1519490350528
+	1519427205328 [label="encoder.0.1.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519427205328 -> 1519490350864
+	1519490350864 [label=AccumulateGrad]
+	1519490349664 -> 1519490350528
+	1519427207088 [label="encoder.0.1.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519427207088 -> 1519490349664
+	1519490349664 [label=AccumulateGrad]
+	1519490347792 -> 1519490349184
+	1519490349136 -> 1519490347024
+	1519490349136 [label=CppFunction]
+	1519490349904 -> 1519490349136
+	1519490349904 [label="UnsafeViewBackward0
+-------------------------------
+self_sym_sizes: (1, 188, 6, 32)"]
+	1519490350432 -> 1519490349904
+	1519490350432 [label=CloneBackward0]
+	1519490350768 -> 1519490350432
+	1519490350768 [label="ViewBackward0
+----------------------------------
+self_sym_sizes: (1, 188, 6, 32, 1)"]
+	1519490349280 -> 1519490350768
+	1519490349280 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490499968 -> 1519490349280
+	1519490499968 [label="ViewBackward0
+----------------------------
+self_sym_sizes: (6, 188, 32)"]
+	1519490498672 -> 1519490499968
+	1519490498672 -> 1519490397776 [dir=none]
+	1519490397776 [label="mat2
+ (6, 188, 32)" fillcolor=orange]
+	1519490498672 -> 1519490398416 [dir=none]
+	1519490398416 [label="self
+ (6, 188, 188)" fillcolor=orange]
+	1519490498672 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490500400 -> 1519490498672
+	1519490500400 [label="ReshapeAliasBackward0
+-----------------------------------
+self_sym_sizes: (6, 188, 188, 1, 1)"]
+	1519490499344 -> 1519490500400
+	1519490499344 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490500640 -> 1519490499344
+	1519490500640 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490500736 -> 1519490500640
+	1519490500736 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490500832 -> 1519490500736
+	1519490500832 -> 1519490398736 [dir=none]
+	1519490398736 [label="other
+ ()" fillcolor=orange]
+	1519490500832 [label="DivBackward0
+---------------------
+other: [saved tensor]
+self :           None"]
+	1519490500928 -> 1519490500832
+	1519490500928 -> 1519490398976 [dir=none]
+	1519490398976 [label="result
+ (1, 188, 6, 188)" fillcolor=orange]
+	1519490500928 [label="SoftmaxBackward0
+----------------------
+dim   :     4294967295
+result: [saved tensor]"]
+	1519490501024 -> 1519490500928
+	1519490501024 [label="ViewBackward0
+-----------------------------------
+self_sym_sizes: (1, 188, 6, 188, 1)"]
+	1519490501120 -> 1519490501024
+	1519490501120 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490501216 -> 1519490501120
+	1519490501216 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (6, 188, 188)"]
+	1519490501312 -> 1519490501216
+	1519490501312 -> 1519490399296 [dir=none]
+	1519490399296 [label="mat2
+ (6, 32, 188)" fillcolor=orange]
+	1519490501312 -> 1519490399216 [dir=none]
+	1519490399216 [label="self
+ (6, 188, 32)" fillcolor=orange]
+	1519490501312 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490501408 -> 1519490501312
+	1519490501408 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 32, 1, 1)"]
+	1519490501552 -> 1519490501408
+	1519490501552 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490501648 -> 1519490501552
+	1519490501648 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490501744 -> 1519490501648
+	1519490501744 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490501840 -> 1519490501744
+	1519490501840 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490501936 -> 1519490501840
+	1519490501936 [label=CppFunction]
+	1519490502032 -> 1519490501936
+	1519490502032 -> 1519427205888 [dir=none]
+	1519427205888 [label="bias
+ (192)" fillcolor=orange]
+	1519490502032 -> 1519433724160 [dir=none]
+	1519433724160 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490502032 -> 1519490399696 [dir=none]
+	1519490399696 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490502032 -> 1519490399456 [dir=none]
+	1519490399456 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490502032 -> 1519427206928 [dir=none]
+	1519427206928 [label="weight
+ (192)" fillcolor=orange]
+	1519490502032 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490349184 -> 1519490502032
+	1519490502128 -> 1519490502032
+	1519427206928 [label="encoder.1.0.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519427206928 -> 1519490502128
+	1519490502128 [label=AccumulateGrad]
+	1519490502080 -> 1519490502032
+	1519427205888 [label="encoder.1.0.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519427205888 -> 1519490502080
+	1519490502080 [label=AccumulateGrad]
+	1519490501360 -> 1519490501312
+	1519490501360 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 32, 1, 188, 1)"]
+	1519490501696 -> 1519490501360
+	1519490501696 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490501888 -> 1519490501696
+	1519490501888 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 1, 3)"]
+	1519490501456 -> 1519490501888
+	1519490501456 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490502224 -> 1519490501456
+	1519490502224 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490502320 -> 1519490502224
+	1519490502320 [label=CppFunction]
+	1519490502032 -> 1519490502320
+	1519490500304 -> 1519490498672
+	1519490500304 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 1, 32, 1)"]
+	1519490500688 -> 1519490500304
+	1519490500688 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490500880 -> 1519490500688
+	1519490500880 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 3, 1)"]
+	1519490501072 -> 1519490500880
+	1519490501072 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490501264 -> 1519490501072
+	1519490501264 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490501600 -> 1519490501264
+	1519490501600 [label=CppFunction]
+	1519490502032 -> 1519490501600
+	1519490347072 -> 1519490347168
+	1519490347072 [label=CppFunction]
+	1519490350240 -> 1519490347072
+	1519490350240 -> 1519490392976 [dir=none]
+	1519490392976 [label="self
+ (1, 188, 768)" fillcolor=orange]
+	1519490350240 [label="GeluBackward0
+---------------------------
+approximate:           none
+self       : [saved tensor]"]
+	1519490349472 -> 1519490350240
+	1519490349472 [label=CppFunction]
+	1519490499632 -> 1519490349472
+	1519490499632 -> 1519429717024 [dir=none]
+	1519429717024 [label="bias
+ (192)" fillcolor=orange]
+	1519490499632 -> 1519490392256 [dir=none]
+	1519490392256 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490499632 -> 1519490399776 [dir=none]
+	1519490399776 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490499632 -> 1519490399856 [dir=none]
+	1519490399856 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490499632 -> 1519427207008 [dir=none]
+	1519427207008 [label="weight
+ (192)" fillcolor=orange]
+	1519490499632 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490347024 -> 1519490499632
+	1519490500592 -> 1519490499632
+	1519427207008 [label="encoder.1.1.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519427207008 -> 1519490500592
+	1519490500592 [label=AccumulateGrad]
+	1519490498768 -> 1519490499632
+	1519429717024 [label="encoder.1.1.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519429717024 -> 1519490498768
+	1519490498768 [label=AccumulateGrad]
+	1519490347792 -> 1519490347360
+	1519490347408 -> 1519490347600
+	1519490347408 [label=CppFunction]
+	1519490349232 -> 1519490347408
+	1519490349232 [label="UnsafeViewBackward0
+-------------------------------
+self_sym_sizes: (1, 188, 6, 32)"]
+	1519490349088 -> 1519490349232
+	1519490349088 [label=CloneBackward0]
+	1519490500784 -> 1519490349088
+	1519490500784 [label="ViewBackward0
+----------------------------------
+self_sym_sizes: (1, 188, 6, 32, 1)"]
+	1519490501168 -> 1519490500784
+	1519490501168 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490501984 -> 1519490501168
+	1519490501984 [label="ViewBackward0
+----------------------------
+self_sym_sizes: (6, 188, 32)"]
+	1519490500496 -> 1519490501984
+	1519490500496 -> 1519490399936 [dir=none]
+	1519490399936 [label="mat2
+ (6, 188, 32)" fillcolor=orange]
+	1519490500496 -> 1519490400096 [dir=none]
+	1519490400096 [label="self
+ (6, 188, 188)" fillcolor=orange]
+	1519490500496 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490502272 -> 1519490500496
+	1519490502272 [label="ReshapeAliasBackward0
+-----------------------------------
+self_sym_sizes: (6, 188, 188, 1, 1)"]
+	1519490501504 -> 1519490502272
+	1519490501504 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490502512 -> 1519490501504
+	1519490502512 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490502608 -> 1519490502512
+	1519490502608 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490502704 -> 1519490502608
+	1519490502704 -> 1519490399616 [dir=none]
+	1519490399616 [label="other
+ ()" fillcolor=orange]
+	1519490502704 [label="DivBackward0
+---------------------
+other: [saved tensor]
+self :           None"]
+	1519490502800 -> 1519490502704
+	1519490502800 -> 1519490400176 [dir=none]
+	1519490400176 [label="result
+ (1, 188, 6, 188)" fillcolor=orange]
+	1519490502800 [label="SoftmaxBackward0
+----------------------
+dim   :     4294967295
+result: [saved tensor]"]
+	1519490502896 -> 1519490502800
+	1519490502896 [label="ViewBackward0
+-----------------------------------
+self_sym_sizes: (1, 188, 6, 188, 1)"]
+	1519490502992 -> 1519490502896
+	1519490502992 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490503088 -> 1519490502992
+	1519490503088 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (6, 188, 188)"]
+	1519490503184 -> 1519490503088
+	1519490503184 -> 1519490399536 [dir=none]
+	1519490399536 [label="mat2
+ (6, 32, 188)" fillcolor=orange]
+	1519490503184 -> 1519490400016 [dir=none]
+	1519490400016 [label="self
+ (6, 188, 32)" fillcolor=orange]
+	1519490503184 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490503280 -> 1519490503184
+	1519490503280 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 32, 1, 1)"]
+	1519490503472 -> 1519490503280
+	1519490503472 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490503568 -> 1519490503472
+	1519490503568 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490503664 -> 1519490503568
+	1519490503664 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490503760 -> 1519490503664
+	1519490503760 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490503856 -> 1519490503760
+	1519490503856 [label=CppFunction]
+	1519490503952 -> 1519490503856
+	1519490503952 -> 1519429724784 [dir=none]
+	1519429724784 [label="bias
+ (192)" fillcolor=orange]
+	1519490503952 -> 1519490392576 [dir=none]
+	1519490392576 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490503952 -> 1519490547856 [dir=none]
+	1519490547856 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490503952 -> 1519490547936 [dir=none]
+	1519490547936 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490503952 -> 1519429725024 [dir=none]
+	1519429725024 [label="weight
+ (192)" fillcolor=orange]
+	1519490503952 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490347360 -> 1519490503952
+	1519490504048 -> 1519490503952
+	1519429725024 [label="encoder.2.0.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519429725024 -> 1519490504048
+	1519490504048 [label=AccumulateGrad]
+	1519490504000 -> 1519490503952
+	1519429724784 [label="encoder.2.0.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519429724784 -> 1519490504000
+	1519490504000 [label=AccumulateGrad]
+	1519490503232 -> 1519490503184
+	1519490503232 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 32, 1, 188, 1)"]
+	1519490503616 -> 1519490503232
+	1519490503616 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490503808 -> 1519490503616
+	1519490503808 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 1, 3)"]
+	1519490503376 -> 1519490503808
+	1519490503376 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490504144 -> 1519490503376
+	1519490504144 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490504240 -> 1519490504144
+	1519490504240 [label=CppFunction]
+	1519490503952 -> 1519490504240
+	1519490502176 -> 1519490500496
+	1519490502176 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 1, 32, 1)"]
+	1519490502560 -> 1519490502176
+	1519490502560 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490502752 -> 1519490502560
+	1519490502752 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 3, 1)"]
+	1519490502944 -> 1519490502752
+	1519490502944 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490503136 -> 1519490502944
+	1519490503136 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490503520 -> 1519490503136
+	1519490503520 [label=CppFunction]
+	1519490503952 -> 1519490503520
+	1519490347648 -> 1519490347744
+	1519490347648 [label=CppFunction]
+	1519490347216 -> 1519490347648
+	1519490347216 -> 1519490393536 [dir=none]
+	1519490393536 [label="self
+ (1, 188, 768)" fillcolor=orange]
+	1519490347216 [label="GeluBackward0
+---------------------------
+approximate:           none
+self       : [saved tensor]"]
+	1519490347456 -> 1519490347216
+	1519490347456 [label=CppFunction]
+	1519490501792 -> 1519490347456
+	1519490501792 -> 1519429725664 [dir=none]
+	1519429725664 [label="bias
+ (192)" fillcolor=orange]
+	1519490501792 -> 1519490392816 [dir=none]
+	1519490392816 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490501792 -> 1519490548096 [dir=none]
+	1519490548096 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490501792 -> 1519490548176 [dir=none]
+	1519490548176 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490501792 -> 1519429725184 [dir=none]
+	1519429725184 [label="weight
+ (192)" fillcolor=orange]
+	1519490501792 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490347600 -> 1519490501792
+	1519490502464 -> 1519490501792
+	1519429725184 [label="encoder.2.1.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519429725184 -> 1519490502464
+	1519490502464 [label=AccumulateGrad]
+	1519490498624 -> 1519490501792
+	1519429725664 [label="encoder.2.1.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519429725664 -> 1519490498624
+	1519490498624 [label=AccumulateGrad]
+	1519490347792 -> 1519490347888
+	1519490347936 -> 1519490348176
+	1519490347936 [label=CppFunction]
+	1519490347312 -> 1519490347936
+	1519490347312 [label="UnsafeViewBackward0
+-------------------------------
+self_sym_sizes: (1, 188, 6, 32)"]
+	1519490347840 -> 1519490347312
+	1519490347840 [label=CloneBackward0]
+	1519490502656 -> 1519490347840
+	1519490502656 [label="ViewBackward0
+----------------------------------
+self_sym_sizes: (1, 188, 6, 32, 1)"]
+	1519490503040 -> 1519490502656
+	1519490503040 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490503904 -> 1519490503040
+	1519490503904 [label="ViewBackward0
+----------------------------
+self_sym_sizes: (6, 188, 32)"]
+	1519490502368 -> 1519490503904
+	1519490502368 -> 1519490548256 [dir=none]
+	1519490548256 [label="mat2
+ (6, 188, 32)" fillcolor=orange]
+	1519490502368 -> 1519490548416 [dir=none]
+	1519490548416 [label="self
+ (6, 188, 188)" fillcolor=orange]
+	1519490502368 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490504192 -> 1519490502368
+	1519490504192 [label="ReshapeAliasBackward0
+-----------------------------------
+self_sym_sizes: (6, 188, 188, 1, 1)"]
+	1519490503424 -> 1519490504192
+	1519490503424 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490504432 -> 1519490503424
+	1519490504432 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490504528 -> 1519490504432
+	1519490504528 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490504624 -> 1519490504528
+	1519490504624 -> 1519490548016 [dir=none]
+	1519490548016 [label="other
+ ()" fillcolor=orange]
+	1519490504624 [label="DivBackward0
+---------------------
+other: [saved tensor]
+self :           None"]
+	1519490504720 -> 1519490504624
+	1519490504720 -> 1519490548496 [dir=none]
+	1519490548496 [label="result
+ (1, 188, 6, 188)" fillcolor=orange]
+	1519490504720 [label="SoftmaxBackward0
+----------------------
+dim   :     4294967295
+result: [saved tensor]"]
+	1519490504816 -> 1519490504720
+	1519490504816 [label="ViewBackward0
+-----------------------------------
+self_sym_sizes: (1, 188, 6, 188, 1)"]
+	1519490504912 -> 1519490504816
+	1519490504912 [label="PermuteBackward0
+---------------------
+dims: (3, 1, 0, 4, 2)"]
+	1519490505008 -> 1519490504912
+	1519490505008 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (6, 188, 188)"]
+	1519490505104 -> 1519490505008
+	1519490505104 -> 1519490548576 [dir=none]
+	1519490548576 [label="mat2
+ (6, 32, 188)" fillcolor=orange]
+	1519490505104 -> 1519490547776 [dir=none]
+	1519490547776 [label="self
+ (6, 188, 32)" fillcolor=orange]
+	1519490505104 [label="BmmBackward0
+--------------------
+mat2: [saved tensor]
+self: [saved tensor]"]
+	1519490505200 -> 1519490505104
+	1519490505200 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 32, 1, 1)"]
+	1519490505344 -> 1519490505200
+	1519490505344 [label="PermuteBackward0
+---------------------
+dims: (2, 1, 4, 0, 3)"]
+	1519490505440 -> 1519490505344
+	1519490505440 [label="PermuteBackward0
+---------------------
+dims: (0, 1, 2, 4, 3)"]
+	1519490505536 -> 1519490505440
+	1519490505536 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490505632 -> 1519490505536
+	1519490505632 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490505728 -> 1519490505632
+	1519490505728 [label=CppFunction]
+	1519490505824 -> 1519490505728
+	1519490505824 -> 1519429725744 [dir=none]
+	1519429725744 [label="bias
+ (192)" fillcolor=orange]
+	1519490505824 -> 1519490393136 [dir=none]
+	1519490393136 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490505824 -> 1519490548656 [dir=none]
+	1519490548656 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490505824 -> 1519490548336 [dir=none]
+	1519490548336 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490505824 -> 1519429726544 [dir=none]
+	1519429726544 [label="weight
+ (192)" fillcolor=orange]
+	1519490505824 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490347888 -> 1519490505824
+	1519490505920 -> 1519490505824
+	1519429726544 [label="encoder.3.0.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519429726544 -> 1519490505920
+	1519490505920 [label=AccumulateGrad]
+	1519490505872 -> 1519490505824
+	1519429725744 [label="encoder.3.0.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519429725744 -> 1519490505872
+	1519490505872 [label=AccumulateGrad]
+	1519490505152 -> 1519490505104
+	1519490505152 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 32, 1, 188, 1)"]
+	1519490505488 -> 1519490505152
+	1519490505488 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490505680 -> 1519490505488
+	1519490505680 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 1, 3)"]
+	1519490505248 -> 1519490505680
+	1519490505248 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490506016 -> 1519490505248
+	1519490506016 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490506112 -> 1519490506016
+	1519490506112 [label=CppFunction]
+	1519490505824 -> 1519490506112
+	1519490504096 -> 1519490502368
+	1519490504096 [label="ReshapeAliasBackward0
+----------------------------------
+self_sym_sizes: (6, 188, 1, 32, 1)"]
+	1519490504480 -> 1519490504096
+	1519490504480 [label="PermuteBackward0
+---------------------
+dims: (2, 4, 0, 3, 1)"]
+	1519490504672 -> 1519490504480
+	1519490504672 [label="PermuteBackward0
+---------------------
+dims: (0, 4, 2, 3, 1)"]
+	1519490504864 -> 1519490504672
+	1519490504864 [label="UnsqueezeBackward0
+------------------
+dim: 4"]
+	1519490505056 -> 1519490504864
+	1519490505056 [label="ViewBackward0
+-----------------------------
+self_sym_sizes: (1, 188, 192)"]
+	1519490505392 -> 1519490505056
+	1519490505392 [label=CppFunction]
+	1519490505824 -> 1519490505392
+	1519490348224 -> 1519490348272
+	1519490348224 [label=CppFunction]
+	1519490347696 -> 1519490348224
+	1519490347696 -> 1519490394096 [dir=none]
+	1519490394096 [label="self
+ (1, 188, 768)" fillcolor=orange]
+	1519490347696 [label="GeluBackward0
+---------------------------
+approximate:           none
+self       : [saved tensor]"]
+	1519490502848 -> 1519490347696
+	1519490502848 [label=CppFunction]
+	1519490503712 -> 1519490502848
+	1519490503712 -> 1519429727264 [dir=none]
+	1519429727264 [label="bias
+ (192)" fillcolor=orange]
+	1519490503712 -> 1519490393376 [dir=none]
+	1519490393376 [label="input
+ (1, 188, 192)" fillcolor=orange]
+	1519490503712 -> 1519490548896 [dir=none]
+	1519490548896 [label="result1
+ (1, 188, 1)" fillcolor=orange]
+	1519490503712 -> 1519490548976 [dir=none]
+	1519490548976 [label="result2
+ (1, 188, 1)" fillcolor=orange]
+	1519490503712 -> 1519429727664 [dir=none]
+	1519429727664 [label="weight
+ (192)" fillcolor=orange]
+	1519490503712 [label="NativeLayerNormBackward0
+--------------------------------
+bias            : [saved tensor]
+input           : [saved tensor]
+normalized_shape:         (192,)
+result1         : [saved tensor]
+result2         : [saved tensor]
+weight          : [saved tensor]"]
+	1519490348176 -> 1519490503712
+	1519490504384 -> 1519490503712
+	1519429727664 [label="encoder.3.1.block.0.weight
+ (192)" fillcolor=lightblue]
+	1519429727664 -> 1519490504384
+	1519490504384 [label=AccumulateGrad]
+	1519490500976 -> 1519490503712
+	1519429727264 [label="encoder.3.1.block.0.bias
+ (192)" fillcolor=lightblue]
+	1519429727264 -> 1519490500976
+	1519490500976 [label=AccumulateGrad]
+	1519490348560 -> 1519490348608
+	1519147635376 [label="classifier.2.weight
+ (192)" fillcolor=lightblue]
+	1519147635376 -> 1519490348560
+	1519490348560 [label=AccumulateGrad]
+	1519490348656 -> 1519490348608
+	1519147639616 [label="classifier.2.bias
+ (192)" fillcolor=lightblue]
+	1519147639616 -> 1519490348656
+	1519490348656 [label=AccumulateGrad]
+	1519490348992 -> 1519490391616
+}

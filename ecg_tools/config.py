@@ -12,7 +12,7 @@ class Mode(Enum):
 
 @dataclasses.dataclass()
 class DatasetConfig:
-    batch_size: int = 512
+    batch_size: int = 64
     num_workers: int = 0  # 多線程設定，設成0 itertools.chain 才不會出錯，但是會很慢
     path: Dict = dataclasses.field(default_factory=lambda: {
         Mode.train: "..\\data\\mitbih_ptbdb_train.csv",
@@ -28,7 +28,7 @@ class DatasetConfig:
 class ModelConfig:
     num_layers: int = 4       # Transformer 的層數，也就是 Encoder 的 N，原本 N=6。代表重複執行的次數，且每次重複執行的參數都不一樣
                               # 為了減少晶片的面積與實作難度，將層數減少到 4 層
-    signal_length: int = 187  # 原本是 187，縮減訊號長度成 149
+    signal_length: int = 187  # 原本是 187
     num_classes: int = 6      # 輸出分類
     input_channels: int = 1   # 輸入訊號的通道數
     embed_size: int = 192     # Transformer 的維度大小，原本是 192
@@ -41,6 +41,6 @@ class EcgConfig:
     dataset: DatasetConfig = DatasetConfig()
     model: ModelConfig = ModelConfig()
     device: Union[int, str] = "cuda"
-    lr: float = 0.0016 # 原本是 2e-4，因為調大 bath_size，所以調大 lr
-    num_epochs: int = 400
+    lr: float = 2e-4 # 原本是 2e-4，因為調大 bath_size，所以調大 lr
+    num_epochs: int = 150
     validation_frequency: int = 2

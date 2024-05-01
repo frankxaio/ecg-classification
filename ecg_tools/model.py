@@ -56,13 +56,20 @@ class MultiHeadAttention(torch.nn.Module):
         self.num_heads = num_heads
 
     def forward(self, x):
+        """
+        :param x: Size=[batch, seq_len, embed_size]
+        :return:
+        """
         assert len(x.shape) == 3
         keys = self.keys_projection(x)
+        # print(f"keys: {keys.shape}")
         values = self.values_projection(x)
         queries = self.queries_projection(x)
+        # 將 embed_size 拆成 num_heads 個部分
         keys = einops.rearrange(keys, "b n (h e) -> b n h e", h=self.num_heads)
         queries = einops.rearrange(queries, "b n (h e) -> b n h e", h=self.num_heads)
         values = einops.rearrange(values, "b n (h e) -> b n h e", h=self.num_heads)
+        # 針對每個 head 做 attention 運算
         energy_term = torch.einsum("bqhe, bkhe -> bqhk", queries, keys)
         # To reduce variance, therefore divide by the square root of the dimension
         divider = sqrt(self.embed_size)
@@ -132,12 +139,10 @@ class ECGformer(nn.Module):
 
     def forward(self, x):
         embedded = self.embedding(x)
-        # i = 0
+
         for layer in self.encoder:
-            # print(f"========{i}===========")
-            # print(layer)
             embedded = layer(embedded + self.positional_encoding)
-            # i=i+1
+
 
         return self.classifier(embedded)
 
@@ -147,7 +152,8 @@ if __name__ == "__main__":
     # print(LinearEmbedding(1, 192)(torch.rand(2, 128, 1)).shape)
     # print(MLP(3)(torch.rand(2, 128, 3)).shape)
     # print(TransformerEncoderLayer(192, 8)(torch.rand(2, 128, 192)).shape)
-    # print(ECGformer(6, 187, 2, 1, 192, 8, 4)(torch.rand(2, 187, 1)).shape)
+    print(ECGformer(6, 187, 2, 1, 192, 8, 4)(torch.rand(2, 187, 1)).shape)
+    # print(MultiHeadAttention(192, 8)(torch.rand(1, 186, 192)).shape)
 
 
 
