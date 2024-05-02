@@ -32,7 +32,7 @@ class ModelConfig:
     num_classes: int = 6      # 輸出分類
     input_channels: int = 1   # 輸入訊號的通道數
     embed_size: int = 192     # Transformer 的維度大小，原本是 192
-    num_heads: int = 8        # MultiHeadAttention 的頭數，原本是 8，因為 186/6=31，剛好是整數，所以改成 6
+    num_heads: int = 8        # MultiHeadAttention 的頭數，原本是 8
     expansion: int = 4        # MLP 的結構中，首先有一個線性層將輸入的維度擴展到 input_channels * expansion，
 
 
@@ -42,5 +42,5 @@ class EcgConfig:
     model: ModelConfig = ModelConfig()
     device: Union[int, str] = "cuda"
     lr: float = 5e-5 # 原本是 2e-4，因為調大 bath_size，所以調大 lr
-    num_epochs: int = 80
+    num_epochs: int = 100
     validation_frequency: int = 2

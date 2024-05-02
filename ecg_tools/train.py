@@ -76,6 +76,7 @@ class ECGClassifierTrainer:
     # TODO: Add Validation Loss
     def validate_epoch(self, epoch):
         self.model.eval()
+        torch.save(self.model, f"model_epoch_{epoch}.pth")
         accuracy = 0
         loader = tqdm(self.data_loader[Mode.eval]) # 進度條
         self.metrics[Mode.eval].reset()
