@@ -38,7 +38,7 @@ def get_data_loaders(config: DatasetConfig):
             EcgLoader(config.path[Mode.eval], config.transforms[Mode.eval]),
             batch_size=config.batch_size,
             num_workers=config.num_workers,
-            shuffle=False
+            shuffle=True
         )
     }
 

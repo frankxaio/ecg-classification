@@ -12,7 +12,7 @@ class Mode(Enum):
 
 @dataclasses.dataclass()
 class DatasetConfig:
-    batch_size: int = 64
+    batch_size: int = 512
     num_workers: int = 0  # 多線程設定，設成0 itertools.chain 才不會出錯，但是會很慢
     path: Dict = dataclasses.field(default_factory=lambda: {
         Mode.train: "..\\data\\mitbih_ptbdb_train.csv",
