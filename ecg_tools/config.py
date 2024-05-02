@@ -12,11 +12,16 @@ class Mode(Enum):
 
 @dataclasses.dataclass()
 class DatasetConfig:
-    batch_size: int = 32 # 原本是 64，調小 bath size
+    batch_size: int = 128 # 原本是 64，調小 bath size
     num_workers: int = 0  # 多線程設定，設成0 itertools.chain 才不會出錯，但是會很慢
     path: Dict = dataclasses.field(default_factory=lambda: {
-        Mode.train: "..\\data\\mitbih_ptbdb_train.csv",
-        Mode.eval: "..\\data\\mitbih_ptbdb_test.csv"
+        # Mode.train: "..\\data\\mitbih_ptbdb_train.csv",
+        # Mode.eval: "..\\data\\mitbih_ptbdb_test.csv"
+
+        # absolute path
+        Mode.train: "C:\\Users\\Xaio\\Documents\\GitHub\\ecg-classification\\data\\mitbih_ptbdb_train.csv",
+        Mode.eval: "C:\\Users\\Xaio\\Documents\\GitHub\\ecg-classification\\data\\mitbih_ptbdb_test.csv"
+
     })
     transforms: Dict = dataclasses.field(default_factory=lambda: {
         Mode.train: Compose([RandomNoise(0.05, 0.5),
