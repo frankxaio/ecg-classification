@@ -16,6 +16,7 @@ from ecg_tools.model import ECGformer
 class ECGClassifierTrainer:
 
     def __init__(self, config: EcgConfig) -> None:
+        # 沒有初始模型
         self.model = ECGformer(
             embed_size=config.model.embed_size,
             num_layers=config.model.num_layers,
@@ -25,6 +26,9 @@ class ECGClassifierTrainer:
             expansion=config.model.expansion,
             input_channels=config.model.input_channels
         ).to(config.device)
+        # 繼續訓練
+        # self.model = torch.load("model_epoch_444.pth")
+        # self.model.to(config.device)
         self.config = config
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.config.lr, weight_decay=1e-4)
         # Set a higher weight for labels with less data

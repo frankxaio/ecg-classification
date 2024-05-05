@@ -14,7 +14,7 @@ class LinearEmbedding(nn.Sequential):
         # Input Embedding Layer, output channel 為 embed_size
         super().__init__(*[
             nn.Linear(input_channels, output_channels),
-            nn.LayerNorm(output_channels),
+            # nn.LayerNorm(output_channels),
             nn.GELU()
         ])
         # position embedding
@@ -75,7 +75,7 @@ class MultiHeadAttention(torch.nn.Module):
         divider = sqrt(self.embed_size)
         mh_out = torch.softmax(energy_term, -1)
         out = torch.einsum('bihv, bvhd -> bihd ', mh_out / divider, values)
-        out = einops.rearrange(out, "b n h e -> b n (h e)")
+        out = einops.rearrange(out, "b n h e -> b n (h e)") # concationate heads
         return self.final_projection(out)
 
 
@@ -90,15 +90,15 @@ class TransformerEncoderLayer(torch.nn.Sequential):
         super(TransformerEncoderLayer, self).__init__(
             *[
                 ResidualAdd(nn.Sequential(*[
-                    nn.LayerNorm(embed_size),
+                    # nn.LayerNorm(embed_size),
                     MultiHeadAttention(embed_size, num_heads),
                     nn.Dropout(dropout)
                 ])),
-                ResidualAdd(nn.Sequential(*[
-                    nn.LayerNorm(embed_size),
-                    MLP(embed_size, expansion),
-                    nn.Dropout(dropout)
-                ]))
+                # ResidualAdd(nn.Sequential(*[
+                #     nn.LayerNorm(embed_size),
+                #     MLP(embed_size, expansion),
+                #     nn.Dropout(dropout)
+                # ]))
             ]
         )
 
@@ -107,8 +107,8 @@ class Classifier(nn.Sequential):
     def __init__(self, embed_size, num_classes):
         super().__init__(*[
             Reduce("b n e -> b e", reduction="mean"),
-            nn.Linear(embed_size, embed_size),
-            nn.LayerNorm(embed_size),
+            # nn.Linear(embed_size, embed_size),
+            # nn.LayerNorm(embed_size),
             nn.Linear(embed_size, num_classes)
         ])
 
