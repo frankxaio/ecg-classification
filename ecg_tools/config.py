@@ -12,7 +12,7 @@ class Mode(Enum):
 
 @dataclasses.dataclass()
 class DatasetConfig:
-    batch_size: int = 512 # 原本是 64，調小 bath size，使用 bz=16 訓練，搭配 lr=0.00005，使用 bz = 256 評估訓練完的模型
+    batch_size: int = 8 # 原本是 64，調小 bath size，使用 bz=16 訓練，搭配 lr=0.00005，使用 bz = 256 評估訓練完的模型
     num_workers: int = 0  # 多線程設定，設成0 itertools.chain 才不會出錯，但是會很慢
     path: Dict = dataclasses.field(default_factory=lambda: {
         # Mode.train: "..\\data\\mitbih_ptbdb_train.csv",
@@ -46,9 +46,9 @@ class EcgConfig:
     dataset: DatasetConfig = DatasetConfig()
     model: ModelConfig = ModelConfig()
     device: Union[int, str] = "cuda"
-    lr: float = 0.00001 # 原本是 2e-4，因為調大 bath_size，所以調大 lr
-                         # 1-400: 0.00005
-                         # 400-444: 0.00001
+    lr: float = 0.00005 # 原本是 2e-4，因為調大 bath_size，所以調大 lr
+                         # 1-600: 0.00005
+                         # 600-1200: 0.00001
                          # 444-: 0.000001
     num_epochs: int = 600
     validation_frequency: int = 2

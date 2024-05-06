@@ -17,18 +17,18 @@ class ECGClassifierTrainer:
 
     def __init__(self, config: EcgConfig) -> None:
         # 沒有初始模型
-        # self.model = ECGformer(
-        #     embed_size=config.model.embed_size,
-        #     num_layers=config.model.num_layers,
-        #     num_heads=config.model.num_heads,
-        #     num_classes=config.model.num_classes,
-        #     signal_length=config.model.signal_length,
-        #     expansion=config.model.expansion,
-        #     input_channels=config.model.input_channels
-        # ).to(config.device)
+        self.model = ECGformer(
+            embed_size=config.model.embed_size,
+            num_layers=config.model.num_layers,
+            num_heads=config.model.num_heads,
+            num_classes=config.model.num_classes,
+            signal_length=config.model.signal_length,
+            expansion=config.model.expansion,
+            input_channels=config.model.input_channels
+        ).to(config.device)
         # 繼續訓練
-        self.model = torch.load("model_epoch_598.pth")
-        self.model.to(config.device)
+        # self.model = torch.load("model_epoch_598.pth")
+        # self.model.to(config.device)
         self.config = config
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.config.lr, weight_decay=1e-4)
         # 更改標籤的時候要改這一行, Set a higher weight for labels with less data
