@@ -15,9 +15,11 @@ class LinearEmbedding(nn.Sequential):
         super().__init__(*[
             nn.Linear(input_channels, output_channels),
             # nn.LayerNorm(output_channels),
-            nn.GELU()
+            # nn.GELU()
+            nn.ReLU()
         ])
         # position embedding
+        # output_channels = 64
         self.cls_token = nn.Parameter(torch.randn(1, output_channels))
 
     def forward(self, x):
@@ -31,9 +33,11 @@ class MLP(nn.Sequential):
     def __init__(self, input_channels, expansion=4):
         super().__init__(*[
             nn.Linear(input_channels, input_channels * expansion),
-            nn.GELU(),
+            # nn.GELU(),
+            nn.ReLU(),
             nn.Linear(input_channels * expansion, input_channels)
         ])
+
 
 
 class ResidualAdd(torch.nn.Module):
@@ -94,11 +98,11 @@ class TransformerEncoderLayer(torch.nn.Sequential):
                     MultiHeadAttention(embed_size, num_heads),
                     nn.Dropout(dropout)
                 ])),
-                # ResidualAdd(nn.Sequential(*[
-                #     nn.LayerNorm(embed_size),
-                #     MLP(embed_size, expansion),
-                #     nn.Dropout(dropout)
-                # ]))
+                ResidualAdd(nn.Sequential(*[
+                    # nn.LayerNorm(embed_size),
+                    MLP(embed_size, expansion),
+                    nn.Dropout(dropout)
+                ]))
             ]
         )
 
@@ -106,6 +110,7 @@ class TransformerEncoderLayer(torch.nn.Sequential):
 class Classifier(nn.Sequential):
     def __init__(self, embed_size, num_classes):
         super().__init__(*[
+            # 等同於這個操作 torch.sum(input_tensor, dim=1) / input_tensor.shape[1]
             Reduce("b n e -> b e", reduction="mean"),
             # nn.Linear(embed_size, embed_size),
             # nn.LayerNorm(embed_size),

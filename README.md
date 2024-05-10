@@ -10,8 +10,3 @@
 > The PTB Diagnostics dataset consists of ECG records from 290 subjects: 148 diagnosed as MI , 52 healthy control, and the rest are diagnosed with 7 different disease. Each record contains ECG signals from 12 leads sampled at the frequency of 1000Hz. In this study we have only used ECG lead II, and worked with MI and healthy control categories in our analyses.
 
 The PTB Diagnostic ECG Database 辨別有沒有心肌梗塞，訓練集與驗證集為8:2，將 ptbdb_normal 的前 3237筆放進訓練集，ptbdb_abnormal 前 8405 放進訓練集。
-
-
-
-
-

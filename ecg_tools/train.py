@@ -27,12 +27,13 @@ class ECGClassifierTrainer:
             input_channels=config.model.input_channels
         ).to(config.device)
         # 繼續訓練
-        # self.model = torch.load("model_epoch_598.pth")
+        # self.model = torch.load("model_epoch_148.pth")
         # self.model.to(config.device)
         self.config = config
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.config.lr, weight_decay=1e-4)
         # 更改標籤的時候要改這一行, Set a higher weight for labels with less data
         # self.loss = torch.nn.CrossEntropyLoss(weight=torch.tensor([0.1, 0.4, 0.2, 0.5, 0.2, 0.2]).to(self.config.device))
+        # self.loss = torch.nn.CrossEntropyLoss(weight=torch.tensor([0.4, 0.1]).to(self.config.device))
         self.loss = torch.nn.CrossEntropyLoss()
 
         self.data_loader = get_data_loaders(self.config.dataset)
